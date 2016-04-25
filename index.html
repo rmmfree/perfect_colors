@@ -512,90 +512,94 @@
   </div>
   <div class="empty-row"></div>
   <div class="empty-row"></div>
-  <div class="container col-22 col-sm-22 col-xm-22 center">
-    <div class="col-6 col-sm-6 md-padding">
-      <div class="control-group col-17 center">
-        <label for="saturation">Saturation</label>
-        <input type="range" id="saturation" class="form-control small-control no-lt-padding" value="100" onInput="javascript: change_values('slider');" />
-        <input type="text" id="saturation_value" class="form-control small-control text-center col-7" value="100" onchange="javascript: change_values('text');" />
-      </div>
-      <hr class="col-17 center">
-      <div class="control-group col-17 center">
-        <label for="lightness">Lightness</label>
-        <input type="range" id="lightness" class="form-control small-control no-lt-padding" value="50" onInput="javascript: change_values('slider');" />
-        <input type="text" id="lightness_value" class="form-control small-control text-center col-7" value="50" onchange="javascript: change_values('text');" />
-      </div>
-      <hr class="col-17 center">
-      <div class="control-group col-17 center">
-        <button class="form-control btn btn-primary" onclick="javascript: reset()">Reset</button>
-      </div>
-      <hr class="col-17 center">
-      <div class="row col-17 center only-desktop">
-        <label>Preview</label>
-        <div id="preview" class="form-control preview"></div>
-        <div id="preview_code" class="sm-padding text-center"></div>
-      </div>
-    </div>
-    <div class="col-12 col-sm-12 col-xm-24 lg-padding">
-      <div id="colors" class="col-24 col-sm-24 shadow-bottom" title="Click on any color to generate a perfect palette">
-      </div>
-      <div class="row col-24 col-sm-24">
-        <br>
-        <form id="format_type">
-          <div class="control-group inline md-padding no-left-padding"><label for="hex" class="inline">Hex</label><input type="radio" id="hex" name="format" checked="true" /></div>
-          <div class="control-group inline md-padding"><label for="rgb" class="inline">RGB</label><input type="radio" id="rgb" name="format" /></div>
-          <div class="control-group inline md-padding"><label for="hsl" class="inline">HSL</label><input type="radio" id="hsl" name="format" /></div>
-        </form>
-      </div>
-      <div class="row col-24 col-sm-24">
-        <label class="pull-left inline sm-padding"> Generate palette from color: 
-        </label>
-        <form action="javascript: void(0); ">
-          <input type="text" class="form-control inline col-7" id="base_color" name="base_color" onsubmit="javascript:generate_palette_from_color();" />
-          <button class="form-control btn btn-primary left-inset col-5" onclick="javascript:generate_palette_from_color();">Generate</button>
-        </form>
-      </div>
-    </div>
-    <div id="generated_colors" class="col-4 col-sm-4 col-xm-22 hidden lg-margin">
-      <div id="big-color-1" class="col-10 col-sm-24 big-color inline"></div><div class="col-12 big-color-text sm-padding sm-no-padding inline">Red</div>    
-      <div id="big-color-2" class="col-10 col-sm-24 big-color inline"></div><div class="col-12 big-color-text sm-padding sm-no-padding inline">Orange</div>    
-      <div id="big-color-3" class="col-10 col-sm-24 big-color inline"></div><div class="col-12 big-color-text sm-padding sm-no-padding inline">Yellow</div>
-      <div id="big-color-4" class="col-10 col-sm-24 big-color inline"></div><div class="col-12 big-color-text sm-padding sm-no-padding inline">Lima</div>    
-      <div id="big-color-5" class="col-10 col-sm-24 big-color inline"></div><div class="col-12 big-color-text sm-padding sm-no-padding inline">Green</div>    
-      <div id="big-color-6" class="col-10 col-sm-24 big-color inline"></div><div class="col-12 big-color-text sm-padding sm-no-padding inline">Spring Green</div>    
-      <div id="big-color-7" class="col-10 col-sm-24 big-color inline"></div><div class="col-12 big-color-text sm-padding sm-no-padding inline">Cyan</div>   
-      <div id="big-color-8" class="col-10 col-sm-24 big-color inline"></div><div class="col-12 big-color-text sm-padding sm-no-padding inline">Blue</div>   
-      <div id="big-color-9" class="col-10 col-sm-24 big-color inline"></div><div class="col-12 big-color-text sm-padding sm-no-padding inline">Indigo</div>   
-      <div id="big-color-10" class="col-10 col-sm-24 big-color inline"></div><div class="col-12 big-color-text sm-padding sm-no-padding inline">Violet</div>   
-      <div id="big-color-11" class="col-10 col-sm-24 big-color inline"></div><div class="col-12 big-color-text sm-padding sm-no-padding inline">Magenta</div>   
-      <div id="big-color-12" class="col-10 col-sm-24 big-color inline"></div><div class="col-12 big-color-text sm-padding sm-no-padding inline">Deeppink</div> 
-      <div class="control-group col-24 col-sm-24 no-margin sm-no-padding">
-        <div class="empty-row"></div>
-        <button id="show_html" class="btn btn-primary col-24 col-xm-24 no-margin hidden" onclick="javascript: show_code()">Get HTML Code</button>
-      </div>
-    </div>
-    <div id="details_window" class="dialog-box center col-16 col-sm-22 col-xm-22 top-7 xm-top-0 hidden no-padding shadow-bottom" style="max-height: 78%; ">
-      <div class="dialog-box-title center col-12 col-sm-20 col-xm-22">
-        <a class="close rounded z-index-top red" href="javascript:close_details();">X</a>
-        <div class="col-17 col-sm-20 col-xm-22 center no-padding">
-          <h1 class="dialog-box-title-text no-margin blue">
-            Selected Colors
-          </h1>
+  <div class="container">
+    <div class="col-22 col-sm-22 col-xm-22 center">
+      <div class="col-6 col-sm-6 md-padding">
+        <div class="control-group col-17 center">
+          <label for="saturation">Saturation</label>
+          <input type="range" id="saturation" class="form-control small-control no-lt-padding" value="100" onInput="javascript: change_values('slider');" />
+          <input type="text" id="saturation_value" class="form-control small-control text-center col-7" value="100" onchange="javascript: change_values('text');" />
+        </div>
+        <hr class="col-17 center">
+        <div class="control-group col-17 center">
+          <label for="lightness">Lightness</label>
+          <input type="range" id="lightness" class="form-control small-control no-lt-padding" value="50" onInput="javascript: change_values('slider');" />
+          <input type="text" id="lightness_value" class="form-control small-control text-center col-7" value="50" onchange="javascript: change_values('text');" />
+        </div>
+        <hr class="col-17 center">
+        <div class="control-group col-17 center">
+          <button class="form-control btn btn-primary" onclick="javascript: reset()">Reset</button>
+        </div>
+        <hr class="col-17 center">
+        <div class="row col-17 center only-desktop">
+          <label>Preview</label>
+          <div id="preview" class="form-control preview"></div>
+          <div id="preview_code" class="sm-padding text-center"></div>
         </div>
       </div>
-      <div class="dialog-box-content col-12 col-sm-20 col-xm-22 center xm-max-height">
-        <div class="row col-17 col-sm-20 col-xm-22 center" id="color_codes" ></div>
+      <div class="col-12 col-sm-12 col-xm-24 lg-padding">
+        <div id="colors" class="col-24 col-sm-24 shadow-bottom" title="Click on any color to generate a perfect palette">
+        </div>
+        <div class="row col-24 col-sm-24">
+          <br>
+          <form id="format_type">
+            <div class="control-group inline md-padding no-left-padding"><label for="hex" class="inline">Hex</label><input type="radio" id="hex" name="format" checked="true" /></div>
+            <div class="control-group inline md-padding"><label for="rgb" class="inline">RGB</label><input type="radio" id="rgb" name="format" /></div>
+            <div class="control-group inline md-padding"><label for="hsl" class="inline">HSL</label><input type="radio" id="hsl" name="format" /></div>
+          </form>
+        </div>
+        <div class="row col-24 col-sm-24">
+          <label class="pull-left inline sm-padding"> Generate palette from color: 
+          </label>
+          <form action="javascript: void(0); ">
+            <input type="text" class="form-control inline col-7" id="base_color" name="base_color" onsubmit="javascript:generate_palette_from_color();" />
+            <button class="form-control btn btn-primary left-inset col-5" onclick="javascript:generate_palette_from_color();">Generate</button>
+          </form>
+        </div>
+      </div>
+      <div id="generated_colors" class="col-4 col-sm-4 col-xm-22 hidden lg-margin">
+        <div id="big-color-1" class="col-10 col-sm-24 big-color inline"></div><div class="col-12 big-color-text sm-padding sm-no-padding inline">Red</div>    
+        <div id="big-color-2" class="col-10 col-sm-24 big-color inline"></div><div class="col-12 big-color-text sm-padding sm-no-padding inline">Orange</div>    
+        <div id="big-color-3" class="col-10 col-sm-24 big-color inline"></div><div class="col-12 big-color-text sm-padding sm-no-padding inline">Yellow</div>
+        <div id="big-color-4" class="col-10 col-sm-24 big-color inline"></div><div class="col-12 big-color-text sm-padding sm-no-padding inline">Lima</div>    
+        <div id="big-color-5" class="col-10 col-sm-24 big-color inline"></div><div class="col-12 big-color-text sm-padding sm-no-padding inline">Green</div>    
+        <div id="big-color-6" class="col-10 col-sm-24 big-color inline"></div><div class="col-12 big-color-text sm-padding sm-no-padding inline">Spring Green</div>    
+        <div id="big-color-7" class="col-10 col-sm-24 big-color inline"></div><div class="col-12 big-color-text sm-padding sm-no-padding inline">Cyan</div>   
+        <div id="big-color-8" class="col-10 col-sm-24 big-color inline"></div><div class="col-12 big-color-text sm-padding sm-no-padding inline">Blue</div>   
+        <div id="big-color-9" class="col-10 col-sm-24 big-color inline"></div><div class="col-12 big-color-text sm-padding sm-no-padding inline">Indigo</div>   
+        <div id="big-color-10" class="col-10 col-sm-24 big-color inline"></div><div class="col-12 big-color-text sm-padding sm-no-padding inline">Violet</div>   
+        <div id="big-color-11" class="col-10 col-sm-24 big-color inline"></div><div class="col-12 big-color-text sm-padding sm-no-padding inline">Magenta</div>   
+        <div id="big-color-12" class="col-10 col-sm-24 big-color inline"></div><div class="col-12 big-color-text sm-padding sm-no-padding inline">Deeppink</div> 
+        <div class="control-group col-24 col-sm-24 no-margin sm-no-padding">
+          <div class="empty-row"></div>
+          <button id="show_html" class="btn btn-primary col-24 col-xm-24 no-margin hidden" onclick="javascript: show_code()">Get HTML Code</button>
+        </div>
+      </div>
+      <div id="details_window" class="dialog-box center col-16 col-sm-22 col-xm-22 top-7 xm-top-0 hidden no-padding shadow-bottom" style="max-height: 78%; ">
+        <div class="dialog-box-title center col-12 col-sm-20 col-xm-22">
+          <a class="close rounded z-index-top red" href="javascript:close_details();">X</a>
+          <div class="col-17 col-sm-20 col-xm-22 center no-padding">
+            <h1 class="dialog-box-title-text no-margin blue">
+              Selected Colors
+            </h1>
+          </div>
+        </div>
+        <div class="dialog-box-content col-12 col-sm-20 col-xm-22 center xm-max-height">
+          <div class="row col-17 col-sm-20 col-xm-22 center" id="color_codes" ></div>
+        </div>
       </div>
     </div>
   </div>
-  <div class="row blue-bg white text-center">This tool generates mathematically perfect color palettes and allows color blind people to identify their color names</div>
-  <div class="row indigo-bg text-center white">It has been created by R. Martín, author of <a class="white underline" title="wothy.com" href="https://wothy.com">Wothy.com</a> and <a class="white underline" title="Shine CSS" href="http://rmmfree.github.io/shine_css/">Shine CSS Framework</a></div>
-  <div class="row lightgrey-bg text-center"><span class="md-vt-padding grey">You can fork it in Github:</span>
-    <a class="lg-lt-padding octicon" href="https://github.com/rmmfree/perfectcolors">
-      <svg aria-hidden="true" class="octicon octicon-mark-github" height="28" version="1.1" viewBox="0 0 16 16" width="28"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59 0.4 0.07 0.55-0.17 0.55-0.38 0-0.19-0.01-0.82-0.01-1.49-2.01 0.37-2.53-0.49-2.69-0.94-0.09-0.23-0.48-0.94-0.82-1.13-0.28-0.15-0.68-0.52-0.01-0.53 0.63-0.01 1.08 0.58 1.23 0.82 0.72 1.21 1.87 0.87 2.33 0.66 0.07-0.52 0.28-0.87 0.51-1.07-1.78-0.2-3.64-0.89-3.64-3.95 0-0.87 0.31-1.59 0.82-2.15-0.08-0.2-0.36-1.02 0.08-2.12 0 0 0.67-0.21 2.2 0.82 0.64-0.18 1.32-0.27 2-0.27 0.68 0 1.36 0.09 2 0.27 1.53-1.04 2.2-0.82 2.2-0.82 0.44 1.1 0.16 1.92 0.08 2.12 0.51 0.56 0.82 1.27 0.82 2.15 0 3.07-1.87 3.75-3.65 3.95 0.29 0.25 0.54 0.73 0.54 1.48 0 1.07-0.01 1.93-0.01 2.2 0 0.21 0.15 0.46 0.55 0.38C13.71 14.53 16 11.53 16 8 16 3.58 12.42 0 8 0z"></path></svg>
-    </a>
+  <div class="col-24 no-bottom-padding">
+    <div class="row blue-bg white text-center">This tool generates mathematically perfect color palettes and allows color blind people to identify their color names</div>
+    <div class="row indigo-bg text-center white">This tool has been created with the <a class="white underline" title="Shine CSS" href="http://rmmfree.github.io/shine_css/">Shine CSS Framework</a></div>
+    <div class="row lightgrey-bg text-center"><span class="md-vt-padding grey">You can fork it in Github:</span>
+      <a class="lg-lt-padding octicon" href="https://github.com/rmmfree/perfectcolors">
+        <svg aria-hidden="true" class="octicon octicon-mark-github" height="28" version="1.1" viewBox="0 0 16 16" width="28"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59 0.4 0.07 0.55-0.17 0.55-0.38 0-0.19-0.01-0.82-0.01-1.49-2.01 0.37-2.53-0.49-2.69-0.94-0.09-0.23-0.48-0.94-0.82-1.13-0.28-0.15-0.68-0.52-0.01-0.53 0.63-0.01 1.08 0.58 1.23 0.82 0.72 1.21 1.87 0.87 2.33 0.66 0.07-0.52 0.28-0.87 0.51-1.07-1.78-0.2-3.64-0.89-3.64-3.95 0-0.87 0.31-1.59 0.82-2.15-0.08-0.2-0.36-1.02 0.08-2.12 0 0 0.67-0.21 2.2 0.82 0.64-0.18 1.32-0.27 2-0.27 0.68 0 1.36 0.09 2 0.27 1.53-1.04 2.2-0.82 2.2-0.82 0.44 1.1 0.16 1.92 0.08 2.12 0.51 0.56 0.82 1.27 0.82 2.15 0 3.07-1.87 3.75-3.65 3.95 0.29 0.25 0.54 0.73 0.54 1.48 0 1.07-0.01 1.93-0.01 2.2 0 0.21 0.15 0.46 0.55 0.38C13.71 14.53 16 11.53 16 8 16 3.58 12.42 0 8 0z"></path></svg>
+      </a>
+    </div>
+    <div class="magenta-bg xm-padding"></div>
   </div>
-  <div class="magenta-bg xm-padding"></div>
   <div class="dark-background" title="Click anywhere to close"></div>
 </body>
 </html>

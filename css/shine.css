@@ -1207,6 +1207,12 @@ ul.table-cell > li
   .col-lg-22 { width: 91.66%; }
   .col-lg-23 { width: 95.83%; }
   .col-lg-24 { width: 100%; }
+
+  .container
+  {
+    margin: 5em auto 3em;
+    overflow: auto;
+  }
 }
 
 /************ End Large Screen ***********/
